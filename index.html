@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SETARA-Edu — Inclusive Learning, Equal Opportunity</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #17345C;
+      --teal: #159C9A;
+      --yellow: #F5B83D;
+      --cream: #F8F8F3;
+      --light-teal: #E8F5F3;
+      --soft-gray: #EEF1F4;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--navy);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Standard Clean Card */
+    .edu-card {
+      background-color: var(--white);
+      border: 1px solid var(--soft-gray);
+      border-radius: 12px;
+    }
+
+    /* Left Sidebar Navigation Links */
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0.65rem 0.875rem;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #475569;
+      text-align: left;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      background-color: var(--cream);
+      color: var(--navy);
+    }
+
+    .nav-link.active {
+      background-color: var(--light-teal);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .nav-link.active i {
+      color: var(--teal);
+    }
+
+    .page-panel {
+      display: none;
+    }
+
+    .page-panel.active {
+      display: block;
+    }
+
+    /* Multimodal Reading Modes */
+    .mode-large-reading {
+      font-size: 1.15rem !important;
+      line-height: 2 !important;
+      letter-spacing: 0.025em !important;
+      background-color: #FFFDF7 !important;
+      border-color: var(--yellow) !important;
+    }
+
+    .mode-high-contrast {
+      background-color: var(--navy) !important;
+      color: var(--white) !important;
+      border-color: var(--yellow) !important;
+    }
+
+    .sentence-highlight {
+      background-color: #FEF3C7;
+      color: var(--navy);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .mode-high-contrast .sentence-highlight {
+      background-color: var(--yellow);
+      color: var(--navy);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- SCREEN 1: EMAIL-BASED ROLE AUTHENTICATION                             -->
+  <!-- ===================================================================== -->
+  <div id="auth-view" class="min-h-screen flex items-center justify-center p-4 sm:p-6">
+    <div class="w-full max-w-md edu-card p-6 sm:p-8 shadow-sm">
+      <!-- Custom SETARA-Edu Emblem & Brand Header -->
+      <div class="flex flex-col items-center text-center pb-6 border-b border-[#EEF1F4]">
+        <svg class="w-36 h-24" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SETARA-Edu Emblem">
+          <!-- Protective Warm Yellow Arc -->
+          <path d="M116 54C135 24 157 14 180 14C203 14 225 24 244 54C223 35 202 27 180 27C158 27 137 35 116 54Z" fill="#F5B83D"/>
+          <!-- Left Figure (Inclusive Teal) -->
+          <circle cx="131" cy="72" r="13" fill="#159C9A"/>
+          <path d="M98 76C106 75 115 80 123 89C131 94 140 91 153 79L157 119C138 113 121 112 108 115L114 93C105 88 99 82 98 76Z" fill="#159C9A"/>
+          <!-- Right Figure (Warm Yellow) -->
+          <circle cx="229" cy="72" r="13" fill="#F5B83D"/>
+          <path d="M262 76C254 75 245 80 237 89C229 94 220 91 207 79L203 119C222 113 239 112 252 115L246 93C255 88 261 82 262 76Z" fill="#F5B83D"/>
+          <!-- Center Figure (Deep Navy) -->
+          <circle cx="180" cy="52" r="16" fill="#17345C"/>
+          <path d="M140 58C149 56 160 63 169 75C176 80 184 80 191 75C200 63 211 56 220 58C217 67 209 75 200 82L197 125L180 140L163 125L160 82C151 75 143 67 140 58Z" fill="#17345C"/>
+          <!-- Open Book Upper Pages (Inclusive Teal) -->
+          <path d="M84 128C115 117 148 122 180 143C212 122 245 117 276 128L285 142C250 129 215 133 180 151C145 133 110 129 75 142L84 128Z" fill="#159C9A"/>
+          <!-- Open Book Lower Base (Deep Navy) -->
+          <path d="M72 146C109 132 145 136 180 154C215 136 251 132 288 146L297 161C258 144 219 146 180 164C141 146 102 144 63 161L72 146Z" fill="#17345C"/>
+          <!-- Wordmark SETARA-Edu -->
+          <text x="180" y="202" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="700" font-size="36" letter-spacing="0.5">
+            <tspan fill="#17345C">SETARA</tspan><tspan fill="#F5B83D">-</tspan><tspan fill="#159C9A">Edu</tspan>
+          </text>
+        </svg>
+        <span class="text-xs font-semibold text-[#159C9A] tracking-wide mt-1">
+          Inclusive Learning, Equal Opportunity
+        </span>
+        <p class="text-xs text-slate-500 mt-1">
+          Offline-First Multimodal Assistive Ecosystem &amp; Peer-Scaffolding
+        </p>
+      </div>
+
+      <!-- Email Sign-In Form -->
+      <form id="signin-form" class="mt-5 space-y-4" novalidate>
+        <div>
+          <label for="user-email-input" class="block text-xs font-semibold text-[#17345C] mb-1.5">
+            School or Institutional Email
+          </label>
+          <input
+            type="email"
+            id="user-email-input"
+            placeholder="name@school.sch.id"
+            required
+            class="w-full px-3.5 py-2.5 text-sm rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] text-[#17345C] focus:bg-white focus:outline-none focus:border-[#159C9A]"
+          />
+          <p id="email-error" class="hidden text-xs text-rose-600 mt-1">
+            Please enter a valid email address.
+          </p>
+        </div>
+
+        <div>
+          <label for="user-role-select" class="block text-xs font-semibold text-[#17345C] mb-1.5">
+            Classroom Role
+          </label>
+          <select
+            id="user-role-select"
+            class="w-full px-3.5 py-2.5 text-sm rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] text-[#17345C] focus:bg-white focus:outline-none focus:border-[#159C9A] cursor-pointer"
+          >
+            <option value="student">Student (Inclusive Learner)</option>
+            <option value="buddy">Academic Buddy (Peer Mentor)</option>
+            <option value="teacher">Classroom Teacher / GPK</option>
+            <option value="copilot">Pedagogical Co-Pilot (University)</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full py-2.5 px-4 rounded-[10px] bg-[#159C9A] hover:bg-[#118280] text-white text-sm font-medium transition cursor-pointer flex items-center justify-center gap-2"
+        >
+          <span>Enter SETARA-Edu Portal</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+      <!-- Instant Role Demo Accounts -->
+      <div class="mt-6 pt-5 border-t border-[#EEF1F4]">
+        <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2.5">
+          Quick Demo Sign-In by Role
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <button type="button" onclick="demoLogin('andi.student@school.sch.id', 'student')" class="text-left p-2.5 rounded-[10px] border border-[#EEF1F4] hover:border-[#159C9A] hover:bg-[#E8F5F3]/50 transition">
+            <div class="text-xs font-semibold text-[#17345C]">Student</div>
+            <div class="text-[11px] text-slate-500 truncate">andi.student@school.sch.id</div>
+          </button>
+
+          <button type="button" onclick="demoLogin('siti.buddy@school.sch.id', 'buddy')" class="text-left p-2.5 rounded-[10px] border border-[#EEF1F4] hover:border-[#F5B83D] hover:bg-amber-50/40 transition">
+            <div class="text-xs font-semibold text-[#17345C]">Academic Buddy</div>
+            <div class="text-[11px] text-slate-500 truncate">siti.buddy@school.sch.id</div>
+          </button>
+
+          <button type="button" onclick="demoLogin('budi.teacher@school.sch.id', 'teacher')" class="text-left p-2.5 rounded-[10px] border border-[#EEF1F4] hover:border-[#159C9A] hover:bg-[#E8F5F3]/50 transition">
+            <div class="text-xs font-semibold text-[#17345C]">Classroom Teacher / GPK</div>
+            <div class="text-[11px] text-slate-500 truncate">budi.teacher@school.sch.id</div>
+          </button>
+
+          <button type="button" onclick="demoLogin('sofia.copilot@radenfatah.ac.id', 'copilot')" class="text-left p-2.5 rounded-[10px] border border-[#EEF1F4] hover:border-[#159C9A] hover:bg-[#E8F5F3]/50 transition">
+            <div class="text-xs font-semibold text-[#17345C]">Pedagogical Co-Pilot</div>
+            <div class="text-[11px] text-slate-500 truncate">sofia.copilot@radenfatah.ac.id</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SCREEN 2: MAIN APPLICATION SHELL WITH LEFT SIDEBAR                    -->
+  <!-- ===================================================================== -->
+  <div id="app-shell" class="hidden min-h-screen flex-1 flex flex-col lg:flex-row">
+
+    <!-- Mobile/Tablet Sidebar Backdrop -->
+    <div id="drawer-backdrop" onclick="toggleDrawer(false)" class="fixed inset-0 bg-[#17345C]/30 z-30 hidden lg:hidden"></div>
+
+    <!-- Left Sidebar (Fixed 256px on Laptop/Desktop, Slide-Over on Tablet/Mobile) -->
+    <aside id="left-sidebar" class="fixed lg:static inset-y-0 left-0 z-40 w-64 bg-white border-r border-[#EEF1F4] flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-in-out shrink-0">
+      <div>
+        <!-- Brand Header -->
+        <div class="px-4 py-4 border-b border-[#EEF1F4] flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-10 h-8 shrink-0" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M116 54C135 24 157 14 180 14C203 14 225 24 244 54C223 35 202 27 180 27C158 27 137 35 116 54Z" fill="#F5B83D"/>
+              <circle cx="131" cy="72" r="13" fill="#159C9A"/>
+              <path d="M98 76C106 75 115 80 123 89C131 94 140 91 153 79L157 119C138 113 121 112 108 115L114 93C105 88 99 82 98 76Z" fill="#159C9A"/>
+              <circle cx="229" cy="72" r="13" fill="#F5B83D"/>
+              <path d="M262 76C254 75 245 80 237 89C229 94 220 91 207 79L203 119C222 113 239 112 252 115L246 93C255 88 261 82 262 76Z" fill="#F5B83D"/>
+              <circle cx="180" cy="52" r="16" fill="#17345C"/>
+              <path d="M140 58C149 56 160 63 169 75C176 80 184 80 191 75C200 63 211 56 220 58C217 67 209 75 200 82L197 125L180 140L163 125L160 82C151 75 143 67 140 58Z" fill="#17345C"/>
+              <path d="M84 128C115 117 148 122 180 143C212 122 245 117 276 128L285 142C250 129 215 133 180 151C145 133 110 129 75 142L84 128Z" fill="#159C9A"/>
+              <path d="M72 146C109 132 145 136 180 154C215 136 251 132 288 146L297 161C258 144 219 146 180 164C141 146 102 144 63 161L72 146Z" fill="#17345C"/>
+            </svg>
+            <div>
+              <div class="font-heading font-bold text-base leading-none">
+                <span class="text-[#17345C]">SETARA</span><span class="text-[#F5B83D]">-</span><span class="text-[#159C9A]">Edu</span>
+              </div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Learning Portal</div>
+            </div>
+          </div>
+          <button type="button" onclick="toggleDrawer(false)" class="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-[#F8F8F3]" aria-label="Close Menu">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Logged-In Role Summary -->
+        <div class="px-4 py-3.5 bg-[#F8F8F3] border-b border-[#EEF1F4]">
+          <div class="flex items-center justify-between gap-2">
+            <span id="sidebar-role-pill" class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-[#17345C] text-white">
+              Teacher / GPK
+            </span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-medium text-[#159C9A]">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#159C9A]"></span> Local DB
+            </span>
+          </div>
+          <div id="sidebar-name" class="text-sm font-semibold text-[#17345C] mt-1.5 truncate">
+            Budi Santoso, S.Pd.
+          </div>
+          <div id="sidebar-email" class="text-xs text-slate-500 truncate">
+            budi.teacher@school.sch.id
+          </div>
+        </div>
+
+        <!-- 6 Primary Pages Navigation -->
+        <nav class="p-3 space-y-1" aria-label="Primary Sidebar Navigation">
+          <button type="button" data-page="page-home" class="nav-link active">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>1. Home</span>
+          </button>
+          <button type="button" data-page="page-assessment" class="nav-link">
+            <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+            <span>2. Student Assessment</span>
+          </button>
+          <button type="button" data-page="page-materials" class="nav-link">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            <span>3. Learning Materials</span>
+          </button>
+          <button type="button" data-page="page-aac" class="nav-link">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>4. Quick-Tap AAC</span>
+          </button>
+          <button type="button" data-page="page-teacher" class="nav-link">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span>5. Teacher Dashboard</span>
+          </button>
+          <button type="button" data-page="page-buddy" class="nav-link">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>6. Academic Buddy</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Offline Storage & Account Controls -->
+      <div class="p-3 border-t border-[#EEF1F4] space-y-2.5">
+        <div class="p-3 rounded-[10px] bg-[#E8F5F3] border border-[#159C9A]/20 text-xs">
+          <div class="flex items-center justify-between font-semibold text-[#17345C]">
+            <span>IndexedDB Storage</span>
+            <span id="idb-cached-count" class="text-[#159C9A]">2 lessons</span>
+          </div>
+          <p class="text-[11px] text-slate-600 mt-0.5">
+            192.168.4.1 &bull; Offline-first ready
+          </p>
+          <button type="button" onclick="cacheAllOffline()" class="mt-2 w-full py-1.5 px-2.5 rounded-lg bg-[#159C9A] hover:bg-[#118280] text-white text-[11px] font-medium transition flex items-center justify-center gap-1.5">
+            <i data-lucide="download-cloud" class="w-3.5 h-3.5"></i>
+            <span>Cache All Materials Offline</span>
+          </button>
+        </div>
+
+        <button type="button" onclick="signOutUser()" class="w-full py-2 px-3 rounded-[10px] border border-[#EEF1F4] hover:bg-[#F8F8F3] text-xs font-medium text-slate-600 transition flex items-center justify-center gap-1.5">
+          <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+          <span>Sign Out / Switch Role</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Column -->
+    <div class="flex-1 flex flex-col min-w-0">
+      <!-- Sticky Top Header -->
+      <header class="bg-white border-b border-[#EEF1F4] sticky top-0 z-20 px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="toggleDrawer(true)" class="lg:hidden p-2 rounded-[10px] border border-[#EEF1F4] text-[#17345C] hover:bg-[#F8F8F3]" aria-label="Open Navigation">
+            <i data-lucide="menu" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h1 id="header-page-title" class="text-base sm:text-lg font-bold text-[#17345C]">Home</h1>
+            <p class="text-xs text-slate-500 hidden sm:block">Inclusive Learning, Equal Opportunity</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <!-- Interactive Offline Simulator Toggle -->
+          <button type="button" id="offline-sim-btn" onclick="toggleOfflineSimulation()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[10px] text-xs font-medium border border-[#EEF1F4] bg-[#F8F8F3] text-[#17345C] hover:border-[#159C9A] transition" title="Simulate disconnecting external internet">
+            <span id="offline-sim-dot" class="w-2 h-2 rounded-full bg-[#159C9A]"></span>
+            <span id="offline-sim-label">Micro-Intranet: Connected</span>
+          </button>
+
+          <span id="header-zpd-badge" class="hidden md:inline-flex items-center px-2.5 py-1.5 rounded-[10px] text-xs font-semibold bg-[#FEF3C7] text-[#17345C]">
+            Andi P. &bull; Foundational Tier
+          </span>
+        </div>
+      </header>
+
+      <!-- Workspace Area -->
+      <main class="flex-1 p-4 sm:p-6 max-w-5xl w-full mx-auto">
+
+        <!-- =============================================================== -->
+        <!-- PAGE 1: HOME                                                    -->
+        <!-- =============================================================== -->
+        <section id="page-home" class="page-panel active space-y-6">
+          <!-- Hero & Welcome Card -->
+          <div class="edu-card p-6 sm:p-7">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold bg-[#E8F5F3] text-[#159C9A]">
+                <i data-lucide="wifi-off" class="w-3.5 h-3.5"></i> Offline-first
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold bg-[#FEF3C7] text-[#17345C]">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Inclusive Learning
+              </span>
+              <span class="text-xs text-slate-400">Concept preview &middot; SETARA-Edu</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-bold text-[#17345C]">
+              Every Child Can Learn.
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 mt-1.5 max-w-2xl">
+              An inclusive learning ecosystem designed to support every child's potential.
+            </p>
+
+            <div class="mt-5 p-4 rounded-[10px] bg-[#E8F5F3] border border-[#159C9A]/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div class="text-sm font-bold text-[#17345C]">Welcome to SETARA-Edu</div>
+                <p class="text-xs sm:text-sm text-slate-700 mt-0.5">
+                  Learning becomes meaningful when every child gets the support they need.
+                </p>
+              </div>
+              <button type="button" onclick="navigateTo('page-materials')" class="px-4 py-2.5 rounded-[10px] bg-[#159C9A] hover:bg-[#118280] text-white text-xs font-medium transition shrink-0 inline-flex items-center gap-1.5">
+                <span>Explore Learning Media</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Learning Modules Grid (4 Core Modules) -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-base font-bold text-[#17345C]">Learning Modules</h3>
+              <span class="text-xs text-slate-500">Select a module to begin</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- Module 1: Assessment -->
+              <div onclick="navigateTo('page-assessment')" class="edu-card p-5 hover:border-[#159C9A] cursor-pointer transition flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-[10px] bg-[#E8F5F3] text-[#159C9A] flex items-center justify-center mb-3">
+                    <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                  </div>
+                  <h4 class="text-sm font-bold text-[#17345C]">Assessment</h4>
+                  <p class="text-xs text-slate-600 mt-1">
+                    Initial literacy and numeracy skill mapping to guide tailored support.
+                  </p>
+                </div>
+                <div class="mt-4 text-xs font-semibold text-[#159C9A] inline-flex items-center gap-1">
+                  <span>Open Assessment</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+
+              <!-- Module 2: Learning Media -->
+              <div onclick="navigateTo('page-materials')" class="edu-card p-5 hover:border-[#159C9A] cursor-pointer transition flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-[10px] bg-[#E8F5F3] text-[#159C9A] flex items-center justify-center mb-3">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                  </div>
+                  <h4 class="text-sm font-bold text-[#17345C]">Learning Media</h4>
+                  <p class="text-xs text-slate-600 mt-1">
+                    Multimodal materials delivered via synchronized text, audio, and visual cards.
+                  </p>
+                </div>
+                <div class="mt-4 text-xs font-semibold text-[#159C9A] inline-flex items-center gap-1">
+                  <span>Open Materials</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+
+              <!-- Module 3: Communication -->
+              <div onclick="navigateTo('page-aac')" class="edu-card p-5 hover:border-[#F5B83D] cursor-pointer transition flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-[10px] bg-[#FEF3C7] text-[#17345C] flex items-center justify-center mb-3">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                  </div>
+                  <h4 class="text-sm font-bold text-[#17345C]">Communication</h4>
+                  <p class="text-xs text-slate-600 mt-1">
+                    Quick-Tap Visual AAC symbols for students with verbal communication challenges.
+                  </p>
+                </div>
+                <div class="mt-4 text-xs font-semibold text-[#159C9A] inline-flex items-center gap-1">
+                  <span>Open Visual AAC</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+
+              <!-- Module 4: Teacher Tools -->
+              <div onclick="navigateTo('page-teacher')" class="edu-card p-5 hover:border-[#159C9A] cursor-pointer transition flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-[10px] bg-[#E8F5F3] text-[#17345C] flex items-center justify-center mb-3">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                  </div>
+                  <h4 class="text-sm font-bold text-[#17345C]">Teacher Tools</h4>
+                  <p class="text-xs text-slate-600 mt-1">
+                    Differentiated learning resources and Auto-PPI Co-Pilot IEP drafts.
+                  </p>
+                </div>
+                <div class="mt-4 text-xs font-semibold text-[#159C9A] inline-flex items-center gap-1">
+                  <span>Open Dashboard</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theoretical Grounding & 16-Week Pilot Summary -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="edu-card p-5">
+              <h3 class="text-sm font-bold text-[#17345C] mb-2.5">Theoretical Foundations &amp; Pedagogical Co-Pilots</h3>
+              <ul class="space-y-2 text-xs text-slate-600">
+                <li class="p-2.5 rounded-lg bg-[#F8F8F3]">
+                  <strong class="text-[#17345C]">Ecological Systems Theory (Bronfenbrenner, 1979):</strong> Aligns school, peer, and classroom environments around the learner.
+                </li>
+                <li class="p-2.5 rounded-lg bg-[#F8F8F3]">
+                  <strong class="text-[#17345C]">Sociocultural Theory &amp; ZPD (Vygotsky, 1978):</strong> Structured peer scaffolding through trained Academic Buddies.
+                </li>
+                <li class="p-2.5 rounded-lg bg-[#F8F8F3]">
+                  <strong class="text-[#17345C]">Differentiated Instruction (Tomlinson, 2017):</strong> Tailors lesson formats to student readiness and learning profiles.
+                </li>
+              </ul>
+            </div>
+
+            <div class="edu-card p-5">
+              <h3 class="text-sm font-bold text-[#17345C] mb-2.5">16-Week Pilot Implementation Roadmap</h3>
+              <div class="space-y-2 text-xs text-slate-600">
+                <div class="p-2.5 rounded-lg bg-[#F8F8F3] flex items-start gap-2.5">
+                  <span class="px-2 py-0.5 rounded bg-[#17345C] text-white font-semibold shrink-0">Weeks 1–3</span>
+                  <span>School coordination, initial literacy-numeracy mapping, local Wi-Fi setup, and Academic Buddy training.</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#F8F8F3] flex items-start gap-2.5">
+                  <span class="px-2 py-0.5 rounded bg-[#159C9A] text-white font-semibold shrink-0">Weeks 4–12</span>
+                  <span>Classroom module integration, twice-weekly peer mentoring sessions, and periodic progress monitoring.</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#F8F8F3] flex items-start gap-2.5">
+                  <span class="px-2 py-0.5 rounded bg-[#F5B83D] text-[#17345C] font-semibold shrink-0">Weeks 13–16</span>
+                  <span>Outcome evaluation (literacy, numeracy, participation, SUS usability) and Teacher Champion handover.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- PAGE 2: STUDENT ASSESSMENT                                      -->
+        <!-- =============================================================== -->
+        <section id="page-assessment" class="page-panel">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 edu-card p-5 sm:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#EEF1F4]">
+                <div>
+                  <h2 class="text-base font-bold text-[#17345C]">Rapid Diagnostic Literacy-Numeracy Mapper</h2>
+                  <p class="text-xs text-slate-500 mt-0.5">
+                    Initial skill assessment stored locally in IndexedDB to guide classroom support.
+                  </p>
+                </div>
+                <button type="button" onclick="resetAssessment()" class="px-3 py-1.5 rounded-lg border border-[#EEF1F4] bg-[#F8F8F3] text-xs font-medium text-slate-600 hover:text-[#17345C]">
+                  Reset Answers
+                </button>
+              </div>
+
+              <div class="space-y-4 mt-5">
+                <!-- Item 1 -->
+                <div class="p-4 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4]">
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="text-xs font-semibold text-[#159C9A]">1. Phonemic Decoding</span>
+                    <button type="button" onclick="speakPhrase('Which word starts with the same sound as the word Sun?')" class="inline-flex items-center gap-1 text-xs font-medium text-[#17345C] bg-white px-2.5 py-1 rounded-md border border-[#EEF1F4]">
+                      <i data-lucide="volume-2" class="w-3.5 h-3.5 text-[#159C9A]"></i> Read Aloud
+                    </button>
+                  </div>
+                  <p class="text-sm text-[#17345C] mb-3">Which word starts with the same beginning sound as <strong>"Sun"</strong>?</p>
+                  <div class="grid grid-cols-3 gap-2" id="assess-q1">
+                    <button type="button" onclick="selectAnswer(1, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">Moon</button>
+                    <button type="button" onclick="selectAnswer(1, true, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">Star</button>
+                    <button type="button" onclick="selectAnswer(1, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">Tree</button>
+                  </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="p-4 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4]">
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="text-xs font-semibold text-[#159C9A]">2. Reading Comprehension</span>
+                    <button type="button" onclick="speakPhrase('Rani has four pencils. She gives one pencil to Dina. How many pencils does Rani have now?')" class="inline-flex items-center gap-1 text-xs font-medium text-[#17345C] bg-white px-2.5 py-1 rounded-md border border-[#EEF1F4]">
+                      <i data-lucide="volume-2" class="w-3.5 h-3.5 text-[#159C9A]"></i> Read Aloud
+                    </button>
+                  </div>
+                  <p class="text-sm text-[#17345C] mb-3">"Rani has <strong>4 pencils</strong>. She gives <strong>1 pencil</strong> to Dina. How many pencils does Rani have now?"</p>
+                  <div class="grid grid-cols-3 gap-2" id="assess-q2">
+                    <button type="button" onclick="selectAnswer(2, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">2 pencils</button>
+                    <button type="button" onclick="selectAnswer(2, true, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">3 pencils</button>
+                    <button type="button" onclick="selectAnswer(2, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">5 pencils</button>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="p-4 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4]">
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="text-xs font-semibold text-[#159C9A]">3. Visual Number Sense</span>
+                    <button type="button" onclick="speakPhrase('Count the apples shown: apple, apple, apple, apple, apple. How many apples are there?')" class="inline-flex items-center gap-1 text-xs font-medium text-[#17345C] bg-white px-2.5 py-1 rounded-md border border-[#EEF1F4]">
+                      <i data-lucide="volume-2" class="w-3.5 h-3.5 text-[#159C9A]"></i> Read Aloud
+                    </button>
+                  </div>
+                  <p class="text-sm text-[#17345C] mb-3">Count the group: <strong>&#127822; &#127822; &#127822; &#127822; &#127822;</strong> — How many apples are shown?</p>
+                  <div class="grid grid-cols-3 gap-2" id="assess-q3">
+                    <button type="button" onclick="selectAnswer(3, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">4</button>
+                    <button type="button" onclick="selectAnswer(3, true, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">5</button>
+                    <button type="button" onclick="selectAnswer(3, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">6</button>
+                  </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="p-4 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4]">
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="text-xs font-semibold text-[#159C9A]">4. Basic Addition</span>
+                    <button type="button" onclick="speakPhrase('What is six plus four?')" class="inline-flex items-center gap-1 text-xs font-medium text-[#17345C] bg-white px-2.5 py-1 rounded-md border border-[#EEF1F4]">
+                      <i data-lucide="volume-2" class="w-3.5 h-3.5 text-[#159C9A]"></i> Read Aloud
+                    </button>
+                  </div>
+                  <p class="text-sm text-[#17345C] mb-3">Solve: <strong>6 + 4 = ?</strong></p>
+                  <div class="grid grid-cols-3 gap-2" id="assess-q4">
+                    <button type="button" onclick="selectAnswer(4, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">9</button>
+                    <button type="button" onclick="selectAnswer(4, true, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">10</button>
+                    <button type="button" onclick="selectAnswer(4, false, this)" class="assess-opt py-2 px-3 rounded-lg bg-white border border-[#EEF1F4] text-xs sm:text-sm font-medium text-[#17345C]">11</button>
+                  </div>
+                </div>
+
+                <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+                  <span class="text-xs text-slate-500">Saved locally to IndexedDB (no internet required).</span>
+                  <button type="button" onclick="saveAssessmentResult()" class="px-5 py-2.5 rounded-[10px] bg-[#159C9A] hover:bg-[#118280] text-white text-xs font-medium transition">
+                    Save Assessment Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Summary Panel -->
+            <aside class="edu-card p-5 sm:p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-base font-bold text-[#17345C]">Readiness Summary</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Guides differentiated lesson delivery</p>
+
+                <div class="mt-4 p-4 rounded-[10px] bg-[#E8F5F3] border border-[#159C9A]/20">
+                  <div class="text-xs text-slate-600">Diagnostic Score</div>
+                  <div class="text-2xl font-heading font-bold text-[#17345C] mt-0.5"><span id="assess-score-val">0</span> / 4</div>
+                  <div class="mt-3 pt-3 border-t border-[#159C9A]/20">
+                    <div class="text-xs text-slate-600">Support Tier</div>
+                    <div id="assess-tier-val" class="text-sm font-bold text-[#17345C] mt-0.5">Foundational Tier</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 space-y-3 text-xs text-slate-600">
+                  <div>
+                    <div class="font-semibold text-[#17345C]">Multimodal Delivery</div>
+                    <p id="assess-media-advice" class="mt-0.5">Enable synchronized audio narration, live captions, and visual step cards.</p>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-[#17345C]">Academic Buddy Support</div>
+                    <p id="assess-buddy-advice" class="mt-0.5">Pair for twice-weekly 30-minute guided reading and visual counting practice.</p>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" onclick="navigateTo('page-materials')" class="mt-6 w-full py-2.5 px-4 rounded-[10px] bg-[#17345C] hover:bg-[#102542] text-white text-xs font-medium transition">
+                Open Recommended Lesson &rarr;
+              </button>
+            </aside>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- PAGE 3: LEARNING MATERIALS (MULTIMODAL + REAL INDEXEDDB CACHE)  -->
+        <!-- =============================================================== -->
+        <section id="page-materials" class="page-panel space-y-4">
+          <!-- Lesson Selector & Offline Persistence Bar -->
+          <div class="edu-card p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <label for="lesson-selector" class="text-xs font-semibold text-[#17345C]">Select Lesson:</label>
+              <select id="lesson-selector" onchange="loadSelectedLesson()" class="px-3 py-2 rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] text-xs font-medium text-[#17345C] focus:outline-none focus:border-[#159C9A] cursor-pointer">
+              </select>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span id="lesson-offline-badge" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#E8F5F3] text-[#159C9A]">
+                Stored in IndexedDB
+              </span>
+              <button type="button" onclick="saveCurrentLessonOffline()" class="px-3 py-1.5 rounded-[10px] bg-[#159C9A] hover:bg-[#118280] text-white text-xs font-medium transition inline-flex items-center gap-1.5">
+                <i data-lucide="bookmark-check" class="w-3.5 h-3.5"></i>
+                <span>Save Offline</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Multimodal Mirroring Workspace -->
+          <div class="edu-card p-5 sm:p-6">
+            <div class="pb-4 border-b border-[#EEF1F4]">
+              <span id="lesson-subject-tag" class="text-xs font-semibold text-[#159C9A]">Literacy &bull; Multimodal Unit</span>
+              <h2 id="lesson-main-title" class="text-lg font-bold text-[#17345C] mt-0.5">
+                Reading Short Stories with Visual Cues
+              </h2>
+            </div>
+
+            <!-- Accessibility Controls -->
+            <div class="py-3.5 border-b border-[#EEF1F4] flex flex-wrap items-center gap-2">
+              <button type="button" onclick="toggleNarration()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-[10px] text-xs font-medium bg-[#159C9A] hover:bg-[#118280] text-white transition">
+                <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                <span id="narration-btn-text">Play Audio Narration</span>
+              </button>
+
+              <button type="button" onclick="toggleMaterialMode('captions')" class="px-3 py-2 rounded-[10px] text-xs font-medium bg-[#F8F8F3] text-[#17345C] border border-[#EEF1F4] hover:border-[#159C9A]">
+                Live Captions: <strong id="lbl-captions">ON</strong>
+              </button>
+
+              <button type="button" onclick="toggleMaterialMode('large')" class="px-3 py-2 rounded-[10px] text-xs font-medium bg-[#F8F8F3] text-[#17345C] border border-[#EEF1F4] hover:border-[#159C9A]">
+                Large Reading Font: <strong id="lbl-large">OFF</strong>
+              </button>
+
+              <button type="button" onclick="toggleMaterialMode('contrast')" class="px-3 py-2 rounded-[10px] text-xs font-medium bg-[#F8F8F3] text-[#17345C] border border-[#EEF1F4] hover:border-[#159C9A]">
+                High Contrast: <strong id="lbl-contrast">OFF</strong>
+              </button>
+            </div>
+
+            <!-- Text + Captions + Visual Cards -->
+            <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="lg:col-span-2 space-y-4">
+                <div id="lesson-passage-card" class="p-5 rounded-[12px] bg-[#F8F8F3] border border-[#EEF1F4] text-base text-[#17345C] space-y-3 transition-all">
+                </div>
+
+                <div id="lesson-caption-panel" class="p-4 rounded-[12px] bg-[#17345C] text-white">
+                  <div class="flex items-center justify-between text-xs mb-1">
+                    <span class="font-semibold text-[#F5B83D]">Live Teacher Speech-to-Text Caption</span>
+                    <button type="button" onclick="nextLessonCaption()" class="text-[#E8F5F3] underline text-[11px]">
+                      Next caption
+                    </button>
+                  </div>
+                  <p id="lesson-caption-text" class="text-sm"></p>
+                </div>
+              </div>
+
+              <!-- Visual Support Cards -->
+              <div class="space-y-3">
+                <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Visual Concept Cards</div>
+                <div id="lesson-visual-cards" class="space-y-2.5"></div>
+
+                <button type="button" onclick="navigateTo('page-aac')" class="w-full py-2.5 px-3 rounded-[10px] bg-[#E8F5F3] hover:bg-[#d5ece8] text-[#17345C] text-xs font-semibold transition">
+                  Respond via Quick-Tap AAC &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- PAGE 4: QUICK-TAP AAC                                           -->
+        <!-- =============================================================== -->
+        <section id="page-aac" class="page-panel">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 edu-card p-5 sm:p-6">
+              <div class="pb-4 border-b border-[#EEF1F4]">
+                <h2 class="text-base font-bold text-[#17345C]">Quick-Tap Visual AAC</h2>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  Symbol-based communication board with voice output and instant local classroom logging.
+                </p>
+              </div>
+
+              <div class="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-3.5">
+                <button type="button" onclick="sendAACMessage('I Need Help', 'Saya Butuh Bantuan')" class="p-4 rounded-[12px] bg-white hover:bg-[#E8F5F3] border-2 border-[#EEF1F4] hover:border-[#159C9A] text-left transition flex flex-col justify-between min-h-[112px]">
+                  <i data-lucide="hand-helping" class="w-6 h-6 text-[#159C9A]"></i>
+                  <div>
+                    <div class="text-sm font-bold text-[#17345C]">I Need Help</div>
+                    <div class="text-xs text-slate-500">Saya Butuh Bantuan</div>
+                  </div>
+                </button>
+
+                <button type="button" onclick="sendAACMessage('Please Repeat', 'Tolong Ulangi')" class="p-4 rounded-[12px] bg-white hover:bg-[#E8F5F3] border-2 border-[#EEF1F4] hover:border-[#159C9A] text-left transition flex flex-col justify-between min-h-[112px]">
+                  <i data-lucide="repeat" class="w-6 h-6 text-[#159C9A]"></i>
+                  <div>
+                    <div class="text-sm font-bold text-[#17345C]">Please Repeat</div>
+                    <div class="text-xs text-slate-500">Tolong Ulangi</div>
+                  </div>
+                </button>
+
+                <button type="button" onclick="sendAACMessage('I Understand', 'Saya Paham')" class="p-4 rounded-[12px] bg-white hover:bg-[#E8F5F3] border-2 border-[#EEF1F4] hover:border-[#159C9A] text-left transition flex flex-col justify-between min-h-[112px]">
+                  <i data-lucide="check-circle-2" class="w-6 h-6 text-[#159C9A]"></i>
+                  <div>
+                    <div class="text-sm font-bold text-[#17345C]">I Understand</div>
+                    <div class="text-xs text-slate-500">Saya Paham</div>
+                  </div>
+                </button>
+
+                <button type="button" onclick="sendAACMessage('Need a Short Break', 'Istirahat Sebentar')" class="p-4 rounded-[12px] bg-white hover:bg-amber-50/60 border-2 border-[#EEF1F4] hover:border-[#F5B83D] text-left transition flex flex-col justify-between min-h-[112px]">
+                  <i data-lucide="pause-circle" class="w-6 h-6 text-[#F5B83D]"></i>
+                  <div>
+                    <div class="text-sm font-bold text-[#17345C]">Need a Short Break</div>
+                    <div class="text-xs text-slate-500">Istirahat Sebentar</div>
+                  </div>
+                </button>
+
+                <button type="button" onclick="sendAACMessage('Show Visual Card', 'Tampilkan Gambar')" class="p-4 rounded-[12px] bg-white hover:bg-[#E8F5F3] border-2 border-[#EEF1F4] hover:border-[#159C9A] text-left transition flex flex-col justify-between min-h-[112px]">
+                  <i data-lucide="image" class="w-6 h-6 text-[#17345C]"></i>
+                  <div>
+                    <div class="text-sm font-bold text-[#17345C]">Show Visual Card</div>
+                    <div class="text-xs text-slate-500">Tampilkan Gambar</div>
+                  </div>
+                </button>
+
+                <button type="button" onclick="sendAACMessage('Ready to Answer', 'Siap Menjawab')" class="p-4 rounded-[12px] bg-white hover:bg-amber-50/60 border-2 border-[#EEF1F4] hover:border-[#F5B83D] text-left transition flex flex-col justify-between min-h-[112px]">
+                  <i data-lucide="hand" class="w-6 h-6 text-[#F5B83D]"></i>
+                  <div>
+                    <div class="text-sm font-bold text-[#17345C]">Ready to Answer</div>
+                    <div class="text-xs text-slate-500">Siap Menjawab</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Live IndexedDB Communication Log -->
+            <aside class="edu-card p-5 sm:p-6 flex flex-col">
+              <div class="flex items-center justify-between pb-3 border-b border-[#EEF1F4]">
+                <h3 class="text-sm font-bold text-[#17345C]">Classroom Message Log</h3>
+                <button type="button" onclick="clearAACLog()" class="text-[11px] text-slate-500 hover:text-[#17345C]">Clear</button>
+              </div>
+              <p class="text-xs text-slate-500 mt-2 mb-3">
+                Persisted in local IndexedDB so Teachers and Academic Buddies see every response.
+              </p>
+              <ul id="aac-message-list" class="space-y-2 text-xs flex-1 overflow-y-auto max-h-72"></ul>
+            </aside>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- PAGE 5: TEACHER DASHBOARD                                       -->
+        <!-- =============================================================== -->
+        <section id="page-teacher" class="page-panel space-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Auto-PPI Co-Pilot -->
+            <div class="lg:col-span-2 edu-card p-5 sm:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#EEF1F4]">
+                <div>
+                  <span class="text-xs font-semibold text-[#159C9A]">Permendikdasmen No. 13 of 2025 &bull; Decision Support</span>
+                  <h2 class="text-base font-bold text-[#17345C] mt-0.5">Auto-PPI Co-Pilot (IEP Documentation)</h2>
+                </div>
+                <span id="ppi-badge" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#FEF3C7] text-[#17345C]">
+                  Draft &bull; Awaiting Teacher Sign-Off
+                </span>
+              </div>
+
+              <p class="text-xs text-slate-600 mt-3 mb-4">
+                Technology serves as a decision-making tool; classroom teachers and Special Education Teachers (GPK) retain full authority over instructional and assessment decisions.
+              </p>
+
+              <div class="space-y-4 text-xs">
+                <div>
+                  <label for="ppi-goal-field" class="block font-semibold text-[#17345C] mb-1">
+                    1. Individualized Literacy &amp; Numeracy Goal
+                  </label>
+                  <textarea id="ppi-goal-field" rows="2" class="w-full rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] p-3 text-[#17345C] focus:bg-white focus:outline-none focus:border-[#159C9A]">Decode initial word sounds and solve single-digit addition up to 10 using visual step cards with 80% accuracy.</textarea>
+                </div>
+
+                <div>
+                  <label for="ppi-media-field" class="block font-semibold text-[#17345C] mb-1">
+                    2. Classroom Multimodal Accommodations
+                  </label>
+                  <textarea id="ppi-media-field" rows="2" class="w-full rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] p-3 text-[#17345C] focus:bg-white focus:outline-none focus:border-[#159C9A]">Provide synchronized Text-to-Speech audio, live teacher captions, visual cards, and Quick-Tap Visual AAC access.</textarea>
+                </div>
+
+                <div>
+                  <label for="ppi-notes-field" class="block font-semibold text-[#17345C] mb-1">
+                    3. Teacher / GPK Instructional Decision Notes
+                  </label>
+                  <textarea id="ppi-notes-field" rows="2" class="w-full rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] p-3 text-[#17345C] focus:bg-white focus:outline-none focus:border-[#159C9A]">Pair learner with trained Academic Buddy twice weekly for 30 minutes under direct teacher supervision.</textarea>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-[#EEF1F4] flex flex-wrap items-center justify-between gap-3">
+                <label class="inline-flex items-center gap-2 text-xs font-medium text-[#17345C] cursor-pointer">
+                  <input type="checkbox" id="ppi-verify-checkbox" class="w-4 h-4 accent-[#159C9A] rounded" />
+                  <span>Verified and authorized by Classroom Teacher / GPK</span>
+                </label>
+
+                <button type="button" onclick="authorizePPI()" class="px-5 py-2.5 rounded-[10px] bg-[#159C9A] hover:bg-[#118280] text-white text-xs font-medium transition">
+                  Approve &amp; Save to IndexedDB
+                </button>
+              </div>
+            </div>
+
+            <!-- Add Custom Offline Lesson + Data Privacy Card -->
+            <div class="space-y-4">
+              <div class="edu-card p-5">
+                <h3 class="text-sm font-bold text-[#17345C]">Publish Offline Lesson</h3>
+                <p class="text-xs text-slate-500 mt-0.5 mb-3">Add a custom lesson directly to the local micro-server.</p>
+                <div class="space-y-2.5 text-xs">
+                  <input type="text" id="new-lesson-title" placeholder="Lesson title (e.g., Counting Coins)" class="w-full px-3 py-2 rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] text-[#17345C] focus:bg-white focus:outline-none focus:border-[#159C9A]" />
+                  <textarea id="new-lesson-body" rows="3" placeholder="Short lesson paragraph for students..." class="w-full px-3 py-2 rounded-[10px] border border-[#EEF1F4] bg-[#F8F8F3] text-[#17345C] focus:bg-white focus:outline-none focus:border-[#159C9A]"></textarea>
+                  <button type="button" onclick="publishCustomLesson()" class="w-full py-2 px-3 rounded-[10px] bg-[#17345C] hover:bg-[#102542] text-white font-medium transition">
+                    Save to Local Micro-Intranet
+                  </button>
+                </div>
+              </div>
+
+              <div class="edu-card p-5 bg-[#E8F5F3]/60">
+                <div class="flex items-center gap-2 text-sm font-bold text-[#17345C]">
+                  <i data-lucide="shield-check" class="w-4 h-4 text-[#159C9A]"></i>
+                  <span>Privacy-by-Design (UU No. 27/2022)</span>
+                </div>
+                <p class="text-xs text-slate-600 mt-1.5">
+                  All assessments, AAC logs, and PPI drafts remain stored locally on the school server with role-based access control and informed parental consent.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- PAGE 6: ACADEMIC BUDDY                                          -->
+        <!-- =============================================================== -->
+        <section id="page-buddy" class="page-panel">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 edu-card p-5 sm:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#EEF1F4]">
+                <div>
+                  <span class="text-xs font-semibold text-[#159C9A]">Twice-Weekly Structured Sessions &bull; Teacher Supervised</span>
+                  <h2 class="text-base font-bold text-[#17345C] mt-0.5">Academic Buddy Peer Mentoring Guide</h2>
+                </div>
+                <span id="buddy-progress-badge" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#E8F5F3] text-[#17345C]">
+                  0 / 4 Steps Completed
+                </span>
+              </div>
+
+              <p class="text-xs text-slate-600 mt-3 mb-4">
+                Peer mentors encourage participation and help peers follow instructions without making instructional decisions or completing tasks for them.
+              </p>
+
+              <div class="space-y-2.5 text-xs">
+                <label class="flex items-start gap-3 p-3.5 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4] cursor-pointer">
+                  <input type="checkbox" onchange="updateBuddySteps()" class="buddy-step-box mt-0.5 w-4 h-4 accent-[#159C9A]" />
+                  <div>
+                    <div class="font-semibold text-[#17345C]">1. Warm Welcome &amp; Accessibility Check (5 mins)</div>
+                    <p class="text-slate-600 mt-0.5">Greet your classmate respectfully and verify that audio and Quick-Tap AAC are ready.</p>
+                  </div>
+                </label>
+
+                <label class="flex items-start gap-3 p-3.5 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4] cursor-pointer">
+                  <input type="checkbox" onchange="updateBuddySteps()" class="buddy-step-box mt-0.5 w-4 h-4 accent-[#159C9A]" />
+                  <div>
+                    <div class="font-semibold text-[#17345C]">2. Clarifying Step-by-Step Instructions (10 mins)</div>
+                    <p class="text-slate-600 mt-0.5">Point to visual concept cards and read instructions together at a comfortable pace.</p>
+                  </div>
+                </label>
+
+                <label class="flex items-start gap-3 p-3.5 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4] cursor-pointer">
+                  <input type="checkbox" onchange="updateBuddySteps()" class="buddy-step-box mt-0.5 w-4 h-4 accent-[#159C9A]" />
+                  <div>
+                    <div class="font-semibold text-[#17345C]">3. Collaborative Literacy &amp; Numeracy Practice (10 mins)</div>
+                    <p class="text-slate-600 mt-0.5">Offer gentle hints while allowing your classmate to choose their own answers.</p>
+                  </div>
+                </label>
+
+                <label class="flex items-start gap-3 p-3.5 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4] cursor-pointer">
+                  <input type="checkbox" onchange="updateBuddySteps()" class="buddy-step-box mt-0.5 w-4 h-4 accent-[#159C9A]" />
+                  <div>
+                    <div class="font-semibold text-[#17345C]">4. Teacher / GPK Supervision &amp; Referral Check (5 mins)</div>
+                    <p class="text-slate-600 mt-0.5">Share session observations with the supervising teacher or GPK.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Ethics & Supervision Standards -->
+            <aside class="edu-card p-5 sm:p-6 space-y-3">
+              <h3 class="text-sm font-bold text-[#17345C]">Peer Mentoring Ethics</h3>
+              <div class="p-3 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4] text-xs">
+                <div class="font-semibold text-[#17345C]">Inclusive Communication</div>
+                <p class="text-slate-600 mt-0.5">Speak clearly, stay patient, and respect non-verbal AAC responses.</p>
+              </div>
+              <div class="p-3 rounded-[10px] bg-[#F8F8F3] border border-[#EEF1F4] text-xs">
+                <div class="font-semibold text-[#17345C]">Confidentiality &amp; Respect</div>
+                <p class="text-slate-600 mt-0.5">Keep peer learning records private and never share scores outside class.</p>
+              </div>
+              <div class="p-3 rounded-[10px] bg-[#E8F5F3] border border-[#159C9A]/20 text-xs">
+                <div class="font-semibold text-[#17345C]">Referral Procedure</div>
+                <p class="text-slate-600 mt-0.5">Refer any instructional or emotional challenges immediately to the Teacher or GPK.</p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Feedback -->
+  <div id="toast-banner" class="fixed bottom-4 right-4 z-50 px-4 py-2.5 rounded-[10px] bg-[#17345C] text-white text-xs font-medium shadow-md opacity-0 pointer-events-none transition-opacity duration-200">
+    Saved
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. REAL INDEXEDDB OFFLINE PERSISTENCE ENGINE (setara_edu_db)
+    // =========================================================================
+    const DB_NAME = 'setara_edu_db';
+    const DB_VERSION = 1;
+    let dbInstance = null;
+
+    const defaultLessons = [
+      {
+        id: 'lesson-literacy-1',
+        title: 'Reading Short Stories with Visual Cues',
+        subject: 'Literacy • Multimodal Unit',
+        lines: [
+          'Rani and Budi walk to the school library every Tuesday morning.',
+          'They choose a picture book about animals and read each short sentence together.',
+          'Visual cards help every student connect new words with clear meanings.'
+        ],
+        captions: [
+          '"Follow along with the highlighted words on your screen."',
+          '"Academic Buddies, invite your partner to tap the matching picture card."'
+        ],
+        cards: [
+          { icon: 'book-open', title: 'School Library', desc: 'A quiet room where students read and borrow books.' },
+          { icon: 'users', title: 'Reading Together', desc: 'Two classmates taking turns reading short sentences.' }
+        ],
+        cachedOffline: true
+      },
+      {
+        id: 'lesson-numeracy-1',
+        title: 'Everyday Addition & Number Lines',
+        subject: 'Numeracy • Multimodal Unit',
+        lines: [
+          'Siti places three green blocks on the left side of her desk.',
+          'Her classmate adds two yellow blocks to the group.',
+          'Counting all blocks together on the number line shows that three plus two equals five.'
+        ],
+        captions: [
+          '"Count each block slowly from left to right."',
+          '"Use the number line card if you want to check your total."'
+        ],
+        cards: [
+          { icon: 'layers', title: '3 + 2 Blocks', desc: 'Combine two small groups into one total group.' },
+          { icon: 'hash', title: 'Total = 5', desc: 'Five objects counted step by step.' }
+        ],
+        cachedOffline: true
+      }
+    ];
+
+    function initIndexedDB() {
+      return new Promise((resolve) => {
+        if (!('indexedDB' in window)) {
+          resolve(null);
+          return;
+        }
+        const request = indexedDB.open(DB_NAME, DB_VERSION);
+        request.onupgradeneeded = (e) => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains('lessons')) {
+            db.createObjectStore('lessons', { keyPath: 'id' });
+          }
+          if (!db.objectStoreNames.contains('records')) {
+            db.createObjectStore('records', { keyPath: 'key' });
+          }
+        };
+        request.onsuccess = async (e) => {
+          dbInstance = e.target.result;
+          const existing = await idbGetAll('lessons');
+          if (existing.length === 0) {
+            for (const lesson of defaultLessons) {
+              await idbPut('lessons', lesson);
+            }
+          }
+          resolve(dbInstance);
+        };
+        request.onerror = () => resolve(null);
+      });
+    }
+
+    function idbPut(storeName, value) {
+      return new Promise((resolve) => {
+        if (!dbInstance) {
+          resolve(false);
+          return;
+        }
+        const tx = dbInstance.transaction(storeName, 'readwrite');
+        tx.objectStore(storeName).put(value);
+        tx.oncomplete = () => resolve(true);
+        tx.onerror = () => resolve(false);
+      });
+    }
+
+    function idbGet(storeName, key) {
+      return new Promise((resolve) => {
+        if (!dbInstance) {
+          resolve(null);
+          return;
+        }
+        const tx = dbInstance.transaction(storeName, 'readonly');
+        const req = tx.objectStore(storeName).get(key);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => resolve(null);
+      });
+    }
+
+    function idbGetAll(storeName) {
+      return new Promise((resolve) => {
+        if (!dbInstance) {
+          resolve([]);
+          return;
+        }
+        const tx = dbInstance.transaction(storeName, 'readonly');
+        const req = tx.objectStore(storeName).getAll();
+        req.onsuccess = () => resolve(req.result || []);
+        req.onerror = () => resolve([]);
+      });
+    }
+
+    // =========================================================================
+    // 2. APPLICATION STATE & ROLE PROFILES
+    // =========================================================================
+    const rolesMap = {
+      student: {
+        label: 'Student',
+        defaultName: 'Andi Pratama (Grade 4)',
+        landingPage: 'page-materials'
+      },
+      buddy: {
+        label: 'Academic Buddy',
+        defaultName: 'Siti Aisyah (Grade 4)',
+        landingPage: 'page-buddy'
+      },
+      teacher: {
+        label: 'Teacher / GPK',
+        defaultName: 'Budi Santoso, S.Pd.',
+        landingPage: 'page-home'
+      },
+      copilot: {
+        label: 'Pedagogical Co-Pilot',
+        defaultName: 'Sofia Ghina Syahira',
+        landingPage: 'page-home'
+      }
+    };
+
+    const appState = {
+      offlineSimulated: false,
+      lessons: [...defaultLessons],
+      currentLesson: defaultLessons[0],
+      captionIndex: 0,
+      captionsOn: true,
+      largeReading: false,
+      highContrast: false,
+      isNarrating: false,
+      narrationTimer: null,
+      assessmentAnswers: { 1: null, 2: null, 3: null, 4: null },
+      aacLogs: []
+    };
+
+    let toastTimeout = null;
+    function notify(message) {
+      const el = document.getElementById('toast-banner');
+      el.textContent = message;
+      el.classList.remove('opacity-0');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => el.classList.add('opacity-0'), 2400);
+    }
+
+    function speakPhrase(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.92;
+        window.speechSynthesis.speak(utterance);
+      }
+      notify('Audio: ' + text);
+    }
+
+    // =========================================================================
+    // 3. EMAIL AUTHENTICATION & SIDEBAR DRAWER
+    // =========================================================================
+    function formatDisplayName(email) {
+      const prefix = email.split('@')[0] || 'User';
+      return prefix
+        .split(/[._-]/)
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+    }
+
+    function performSignIn(email, roleKey) {
+      const info = rolesMap[roleKey] || rolesMap.teacher;
+      document.getElementById('sidebar-role-pill').textContent = info.label;
+      document.getElementById('sidebar-email').textContent = email;
+
+      const isDemoEmail = ['andi.student', 'siti.buddy', 'budi.teacher', 'sofia.copilot'].some(k => email.includes(k));
+      document.getElementById('sidebar-name').textContent = isDemoEmail ? info.defaultName : formatDisplayName(email);
+
+      document.getElementById('auth-view').classList.add('hidden');
+      document.getElementById('app-shell').classList.remove('hidden');
+
+      navigateTo(info.landingPage);
+      notify(`Signed in as ${info.label}`);
+    }
+
+    function demoLogin(email, roleKey) {
+      document.getElementById('user-email-input').value = email;
+      document.getElementById('user-role-select').value = roleKey;
+      document.getElementById('email-error').classList.add('hidden');
+      performSignIn(email, roleKey);
+    }
+
+    document.getElementById('signin-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('user-email-input').value.trim();
+      const role = document.getElementById('user-role-select').value;
+      const err = document.getElementById('email-error');
+
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        err.classList.remove('hidden');
+        return;
+      }
+      err.classList.add('hidden');
+      performSignIn(email, role);
+    });
+
+    function signOutUser() {
+      stopNarration();
+      toggleDrawer(false);
+      document.getElementById('app-shell').classList.add('hidden');
+      document.getElementById('auth-view').classList.remove('hidden');
+      notify('Signed out');
+    }
+
+    function toggleDrawer(open) {
+      const sidebar = document.getElementById('left-sidebar');
+      const backdrop = document.getElementById('drawer-backdrop');
+      if (open) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+
+      const targetPanel = document.getElementById(pageId);
+      const targetLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+      if (targetPanel) targetPanel.classList.add('active');
+      if (targetLink) {
+        targetLink.classList.add('active');
+        document.getElementById('header-page-title').textContent = targetLink.textContent.trim().replace(/^\d+\.\s*/, '');
+      }
+      toggleDrawer(false);
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => navigateTo(link.dataset.page));
+    });
+
+    // =========================================================================
+    // 4. OFFLINE SIMULATOR & INDEXEDDB SYNC
+    // =========================================================================
+    function toggleOfflineSimulation() {
+      appState.offlineSimulated = !appState.offlineSimulated;
+      const btn = document.getElementById('offline-sim-btn');
+      const dot = document.getElementById('offline-sim-dot');
+      const lbl = document.getElementById('offline-sim-label');
+
+      if (appState.offlineSimulated) {
+        btn.classList.add('bg-[#FEF3C7]', 'border-[#F5B83D]');
+        dot.classList.remove('bg-[#159C9A]');
+        dot.classList.add('bg-[#F5B83D]');
+        lbl.textContent = 'Offline Mode: Active (IndexedDB)';
+        notify('External network disconnected — serving from local IndexedDB');
+      } else {
+        btn.classList.remove('bg-[#FEF3C7]', 'border-[#F5B83D]');
+        dot.classList.remove('bg-[#F5B83D]');
+        dot.classList.add('bg-[#159C9A]');
+        lbl.textContent = 'Micro-Intranet: Connected';
+        notify('Connected to school Wi-Fi micro-server (192.168.4.1)');
+      }
+    }
+
+    async function cacheAllOffline() {
+      for (const lesson of appState.lessons) {
+        lesson.cachedOffline = true;
+        await idbPut('lessons', lesson);
+      }
+      updateOfflineCounter();
+      notify(`All ${appState.lessons.length} lessons cached in IndexedDB for offline use`);
+    }
+
+    function updateOfflineCounter() {
+      const cached = appState.lessons.filter(l => l.cachedOffline).length;
+      document.getElementById('idb-cached-count').textContent = `${cached} lessons`;
+    }
+
+    // =========================================================================
+    // 5. PAGE 2: STUDENT ASSESSMENT
+    // =========================================================================
+    function selectAnswer(qIdx, isCorrect, btn) {
+      const group = document.getElementById(`assess-q${qIdx}`);
+      group.querySelectorAll('.assess-opt').forEach(b => {
+        b.classList.remove('bg-[#159C9A]', 'text-white', 'border-[#159C9A]', 'font-semibold');
+        b.classList.add('bg-white', 'text-[#17345C]', 'border-[#EEF1F4]');
+      });
+      btn.classList.remove('bg-white', 'text-[#17345C]', 'border-[#EEF1F4]');
+      btn.classList.add('bg-[#159C9A]', 'text-white', 'border-[#159C9A]', 'font-semibold');
+      appState.assessmentAnswers[qIdx] = isCorrect;
+    }
+
+    async function saveAssessmentResult() {
+      const answeredCount = Object.values(appState.assessmentAnswers).filter(v => v !== null).length;
+      if (answeredCount < 4) {
+        notify('Please complete all 4 assessment items first.');
+        return;
+      }
+
+      const score = Object.values(appState.assessmentAnswers).filter(v => v === true).length;
+      let tier = 'Foundational Tier';
+      let mediaAdvice = 'Enable synchronized audio narration, live captions, and visual step cards.';
+      let buddyAdvice = 'Pair for twice-weekly 30-minute guided reading and visual counting practice.';
+
+      if (score === 3) {
+        tier = 'Developing Tier';
+        mediaAdvice = 'Combine visual concept cards with guided reading and live captions.';
+        buddyAdvice = 'Practice short story comprehension and number line addition together.';
+      } else if (score === 4) {
+        tier = 'Proficient Tier';
+        mediaAdvice = 'Standard multimodal text with optional audio verification.';
+        buddyAdvice = 'Lead collaborative problem-solving discussions with peers.';
+      }
+
+      document.getElementById('assess-score-val').textContent = score;
+      document.getElementById('assess-tier-val').textContent = tier;
+      document.getElementById('assess-media-advice').textContent = mediaAdvice;
+      document.getElementById('assess-buddy-advice').textContent = buddyAdvice;
+      document.getElementById('header-zpd-badge').textContent = `Andi P. • ${tier}`;
+
+      await idbPut('records', { key: 'assessment_profile', score, tier });
+      notify(`Assessment saved to IndexedDB (${tier})`);
+    }
+
+    function resetAssessment() {
+      appState.assessmentAnswers = { 1: null, 2: null, 3: null, 4: null };
+      document.querySelectorAll('.assess-opt').forEach(b => {
+        b.classList.remove('bg-[#159C9A]', 'text-white', 'border-[#159C9A]', 'font-semibold');
+        b.classList.add('bg-white', 'text-[#17345C]', 'border-[#EEF1F4]');
+      });
+      document.getElementById('assess-score-val').textContent = '0';
+      document.getElementById('assess-tier-val').textContent = 'Foundational Tier';
+      document.getElementById('header-zpd-badge').textContent = 'Andi P. • Foundational Tier';
+      notify('Assessment answers cleared');
+    }
+
+    // =========================================================================
+    // 6. PAGE 3: LEARNING MATERIALS (MULTIMODAL + INDEXEDDB)
+    // =========================================================================
+    function populateLessonSelector() {
+      const sel = document.getElementById('lesson-selector');
+      sel.innerHTML = '';
+      appState.lessons.forEach(lesson => {
+        const opt = document.createElement('option');
+        opt.value = lesson.id;
+        opt.textContent = lesson.title;
+        sel.appendChild(opt);
+      });
+    }
+
+    function renderLessonContent(lesson) {
+      stopNarration();
+      appState.currentLesson = lesson;
+      appState.captionIndex = 0;
+
+      document.getElementById('lesson-subject-tag').textContent = lesson.subject;
+      document.getElementById('lesson-main-title').textContent = lesson.title;
+      document.getElementById('lesson-offline-badge').textContent = lesson.cachedOffline ? 'Stored in IndexedDB' : 'Not Cached';
+
+      const passageBox = document.getElementById('lesson-passage-card');
+      passageBox.innerHTML = lesson.lines.map(line => `<p class="lesson-sentence">${line}</p>`).join('');
+
+      document.getElementById('lesson-caption-text').textContent = lesson.captions[0] || '"Follow along with the visual cards."';
+
+      const cardsContainer = document.getElementById('lesson-visual-cards');
+      cardsContainer.innerHTML = lesson.cards.map(c => `
+        <div class="p-3.5 rounded-[10px] border border-[#EEF1F4] bg-white flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-[#E8F5F3] text-[#159C9A] flex items-center justify-center shrink-0">
+            <i data-lucide="${c.icon}" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-[#17345C]">${c.title}</div>
+            <p class="text-xs text-slate-500">${c.desc}</p>
+          </div>
+        </div>
+      `).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    async function loadSelectedLesson() {
+      const selectedId = document.getElementById('lesson-selector').value;
+      const fromDb = await idbGet('lessons', selectedId);
+      const lesson = fromDb || appState.lessons.find(l => l.id === selectedId) || appState.lessons[0];
+
+      if (appState.offlineSimulated && !lesson.cachedOffline) {
+        notify('Offline Mode: This lesson was not cached yet.');
+        return;
+      }
+      renderLessonContent(lesson);
+    }
+
+    async function saveCurrentLessonOffline() {
+      appState.currentLesson.cachedOffline = true;
+      await idbPut('lessons', appState.currentLesson);
+      document.getElementById('lesson-offline-badge').textContent = 'Stored in IndexedDB';
+      updateOfflineCounter();
+      notify(`Saved "${appState.currentLesson.title}" to IndexedDB`);
+    }
+
+    function toggleNarration() {
+      const sentences = document.querySelectorAll('.lesson-sentence');
+      const btnText = document.getElementById('narration-btn-text');
+
+      if (appState.isNarrating) {
+        stopNarration();
+        return;
+      }
+
+      appState.isNarrating = true;
+      btnText.textContent = 'Stop Narration';
+
+      function speakSentence(idx) {
+        sentences.forEach(s => s.classList.remove('sentence-highlight'));
+        if (idx >= sentences.length) {
+          stopNarration();
+          return;
+        }
+        const el = sentences[idx];
+        el.classList.add('sentence-highlight');
+        const text = el.textContent.trim();
+
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(text);
+          u.lang = 'en-US';
+          u.rate = 0.92;
+          u.onend = () => {
+            if (appState.isNarrating) speakSentence(idx + 1);
+          };
+          window.speechSynthesis.speak(u);
+        } else {
+          appState.narrationTimer = setTimeout(() => {
+            if (appState.isNarrating) speakSentence(idx + 1);
+          }, 3000);
+        }
+      }
+
+      speakSentence(0);
+    }
+
+    function stopNarration() {
+      appState.isNarrating = false;
+      clearTimeout(appState.narrationTimer);
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      document.querySelectorAll('.lesson-sentence').forEach(s => s.classList.remove('sentence-highlight'));
+      document.getElementById('narration-btn-text').textContent = 'Play Audio Narration';
+    }
+
+    function toggleMaterialMode(mode) {
+      if (mode === 'captions') {
+        appState.captionsOn = !appState.captionsOn;
+        document.getElementById('lesson-caption-panel').classList.toggle('hidden', !appState.captionsOn);
+        document.getElementById('lbl-captions').textContent = appState.captionsOn ? 'ON' : 'OFF';
+      } else if (mode === 'large') {
+        appState.largeReading = !appState.largeReading;
+        document.getElementById('lesson-passage-card').classList.toggle('mode-large-reading', appState.largeReading);
+        document.getElementById('lbl-large').textContent = appState.largeReading ? 'ON' : 'OFF';
+      } else if (mode === 'contrast') {
+        appState.highContrast = !appState.highContrast;
+        document.getElementById('lesson-passage-card').classList.toggle('mode-high-contrast', appState.highContrast);
+        document.getElementById('lbl-contrast').textContent = appState.highContrast ? 'ON' : 'OFF';
+      }
+    }
+
+    function nextLessonCaption() {
+      const caps = appState.currentLesson.captions;
+      if (!caps || caps.length === 0) return;
+      appState.captionIndex = (appState.captionIndex + 1) % caps.length;
+      document.getElementById('lesson-caption-text').textContent = caps[appState.captionIndex];
+    }
+
+    // =========================================================================
+    // 7. PAGE 4: QUICK-TAP AAC (INDEXEDDB LOGGED)
+    // =========================================================================
+    function renderAACLogs() {
+      const list = document.getElementById('aac-message-list');
+      if (appState.aacLogs.length === 0) {
+        list.innerHTML = `<li class="p-2.5 rounded-lg bg-[#F8F8F3] border border-[#EEF1F4] text-slate-500">No messages tapped yet.</li>`;
+        return;
+      }
+      list.innerHTML = appState.aacLogs.map(item => `
+        <li class="p-2.5 rounded-lg bg-[#E8F5F3] border border-[#159C9A]/20 text-[#17345C]">
+          <span class="font-semibold text-[#159C9A]">[${item.time}]</span> <strong>${item.en}</strong> (${item.id})
+        </li>
+      `).join('');
+    }
+
+    async function sendAACMessage(en, id) {
+      speakPhrase(en);
+      const time = new Date().toTimeString().slice(0, 5);
+      appState.aacLogs.unshift({ time, en, id });
+      if (appState.aacLogs.length > 15) appState.aacLogs.pop();
+      renderAACLogs();
+      await idbPut('records', { key: 'aac_logs', logs: appState.aacLogs });
+    }
+
+    async function clearAACLog() {
+      appState.aacLogs = [];
+      renderAACLogs();
+      await idbPut('records', { key: 'aac_logs', logs: [] });
+      notify('Communication log cleared');
+    }
+
+    // =========================================================================
+    // 8. PAGE 5: TEACHER DASHBOARD (AUTO-PPI & CUSTOM OFFLINE LESSON)
+    // =========================================================================
+    async function authorizePPI() {
+      const checked = document.getElementById('ppi-verify-checkbox').checked;
+      if (!checked) {
+        notify('Please check the teacher authorization box first.');
+        return;
+      }
+      const badge = document.getElementById('ppi-badge');
+      badge.textContent = 'Authorized by Teacher / GPK';
+      badge.className = 'px-2.5 py-1 rounded-md text-xs font-semibold bg-[#E8F5F3] text-[#159C9A]';
+
+      await idbPut('records', {
+        key: 'approved_ppi',
+        goal: document.getElementById('ppi-goal-field').value,
+        media: document.getElementById('ppi-media-field').value,
+        notes: document.getElementById('ppi-notes-field').value,
+        approved: true
+      });
+      notify('Individualized Education Program saved locally');
+    }
+
+    async function publishCustomLesson() {
+      const titleInput = document.getElementById('new-lesson-title');
+      const bodyInput = document.getElementById('new-lesson-body');
+      const title = titleInput.value.trim();
+      const body = bodyInput.value.trim();
+
+      if (!title || !body) {
+        notify('Please enter both a lesson title and text.');
+        return;
+      }
+
+      const sentences = body.split(/(?<=[.!?])\s+/).filter(Boolean);
+      const newLesson = {
+        id: 'lesson-custom-' + Date.now(),
+        title,
+        subject: 'Teacher Created • Offline Unit',
+        lines: sentences.length ? sentences : [body],
+        captions: [`"Teacher lesson: ${title}."`],
+        cards: [
+          { icon: 'book-open', title, desc: 'Created locally by Classroom Teacher.' }
+        ],
+        cachedOffline: true
+      };
+
+      appState.lessons.push(newLesson);
+      await idbPut('lessons', newLesson);
+      populateLessonSelector();
+      updateOfflineCounter();
+
+      titleInput.value = '';
+      bodyInput.value = '';
+      notify(`"${title}" saved to IndexedDB & Learning Materials`);
+    }
+
+    // =========================================================================
+    // 9. PAGE 6: ACADEMIC BUDDY CHECKLIST
+    // =========================================================================
+    function updateBuddySteps() {
+      const boxes = document.querySelectorAll('.buddy-step-box');
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      document.getElementById('buddy-progress-badge').textContent = `${done} / ${boxes.length} Steps Completed`;
+      if (done === boxes.length) {
+        notify('30-minute Academic Buddy session completed');
+      }
+    }
+
+    // =========================================================================
+    // 10. INITIALIZATION ON PAGE LOAD
+    // =========================================================================
+    window.addEventListener('DOMContentLoaded', async () => {
+      if (window.lucide) lucide.createIcons();
+      await initIndexedDB();
+
+      const storedLessons = await idbGetAll('lessons');
+      if (storedLessons.length > 0) {
+        appState.lessons = storedLessons;
+      }
+      populateLessonSelector();
+      renderLessonContent(appState.lessons[0]);
+      updateOfflineCounter();
+
+      const savedAAC = await idbGet('records', 'aac_logs');
+      if (savedAAC && Array.isArray(savedAAC.logs)) {
+        appState.aacLogs = savedAAC.logs;
+      }
+      renderAACLogs();
+
+      const savedProfile = await idbGet('records', 'assessment_profile');
+      if (savedProfile && savedProfile.tier) {
+        document.getElementById('assess-score-val').textContent = savedProfile.score;
+        document.getElementById('assess-tier-val').textContent = savedProfile.tier;
+        document.getElementById('header-zpd-badge').textContent = `Andi P. • ${savedProfile.tier}`;
+      }
+    });
+  </script>
+</body>
+</html>
